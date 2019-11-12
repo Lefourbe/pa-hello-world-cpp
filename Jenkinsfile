@@ -4,5 +4,5 @@ node(){
 	checkout scm
 	sh "make"
 	sh "./main"
-	archiveArtifacts artifacts: 'output/*.'txt'
+	archiveARtifact(allowEmptyArchive: false, artifacts: 'build/*', fingerprint: true, onlyIfSuccessful: true)
 }
