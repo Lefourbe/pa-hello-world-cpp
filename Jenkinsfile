@@ -3,20 +3,13 @@ node(){
 	cleanWs()
 	checkout scm
 	stage('Build'){
-		steps{
-			sh "make"
-		}
+		sh "make"
 	}
 	stage('Test'){
-		steps{
-			sh "./main"
-		}
+		sh "./main"
 	}
 	stage('Archive'){
-		steps{
-			archiveArtifacts(artifacts: 'main, *.o', fingerprint: true, onlyIfSuccessful: true)
-		}
+		archiveArtifacts(artifacts: 'main, *.o', fingerprint: true, onlyIfSuccessful: true)
 	}
-	
 }
 			
