@@ -4,5 +4,7 @@ node(){
 	checkout scm
 	sh "make"
 	sh "./main"
-	archiveArtifacts(allowEmptyArchive: false, artifacts: 'main, main.o', fingerprint: true, onlyIfSuccessful: true)
+	archiveArtifacts(artifacts: 'main, *.o', fingerprint: true, onlyIfSuccessful: true)
+	stage 'Checkout'
+	stage 'Commit'
 }
