@@ -1,4 +1,4 @@
-properties([piprlineTriggers([pollSCM('H/3 * * * *')])])
+properties([pipelineTriggers([pollSCM('H/3 * * * *')])])
 node(){
 	cleanWs()
 	checkout scm
