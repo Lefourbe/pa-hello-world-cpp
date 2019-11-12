@@ -2,9 +2,22 @@ properties([pipelineTriggers([pollSCM('H/3 * * * *')])])
 node(){
 	cleanWs()
 	checkout scm
-	sh "make"
-	sh "./main"
-	archiveArtifacts(artifacts: 'main, *.o', fingerprint: true, onlyIfSuccessful: true)
-	stage 'Checkout'
-	stage 'Commit'
+	stages{
+		stage('Build'){
+			steps{
+				sh "make"
+			}
+		}
+		stage('Test'){
+			steps{
+				sh "./main"
+			}
+		}
+		stage('Archive'){
+			steps{
+				archiveArtifacts(artifacts: 'main, *.o', fingerprint: true, onlyIfSuccessful: true)
+			}
+		}
+	}
 }
+			
