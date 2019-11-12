@@ -2,7 +2,6 @@ properties([pipelineTriggers([pollSCM('H/3 * * * *')])])
 node(){
 	cleanWs()
 	checkout scm
-	agent any
 	stage('Build'){
 		steps{
 			sh "make"
